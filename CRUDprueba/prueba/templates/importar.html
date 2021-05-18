@@ -1,0 +1,13 @@
+{% extends 'base.html' %}  
+{% block content  %}  
+ <form method="post" enctype="multipart/form-data">  
+{% csrf_token %}  
+  <input type="file" name="xlsfile">  
+  <button type="submit">Subir</button>  
+ </form>  
+ <div class="col-md-4">
+    <a href="{% url 'clientes_list' %}" class="btn btn-secondary btn-block btn-lg">
+        <i class="fas fa-stream"></i> Back to list
+    </a>
+</div>
+{% endblock %}  

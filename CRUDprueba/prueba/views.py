@@ -1,4 +1,4 @@
-from CRUDprueba.CRUDprueba.settings import IMPORT_EXPORT_USE_TRANSACTIONS
+
 from django.db.models.query_utils import FilteredRelation
 from django.shortcuts import render, redirect
 from django_filters.filters import DateFromToRangeFilter
@@ -6,16 +6,8 @@ from .models import Clientes
 from .forms import ClientesForm
 from .filters import OrderFilter
 from django.forms import inlineformset_factory
-
-
-from django.http import HttpResponse
-
-from import_export import resources
-
-class ClientesResource(resources.ModelResource):
-    class Meta:
-        model = Clientes
-
+from .resources import ClientesResource
+from tablib import Dataset 
 
 
 
@@ -51,3 +43,18 @@ def clientes_delete(request,id):
     cliente.delete()
     return redirect('/clientes/list')
 
+def importar(request):  
+   #template = loader.get_template('export/importar.html')  
+   if request.method == 'POST':  
+     cliente_resource = ClientesResource()  
+     dataset = Dataset()  
+     #print(dataset)  
+     nuevas_cliente = request.FILES['xlsfile']  
+     #print(nuevas_personas)  
+     imported_data = dataset.load(nuevas_cliente.read())  
+     #print(dataset)  
+     result = cliente_resource.import_data(dataset, dry_run=True) # Test the data import  
+     #print(result.has_errors())  
+     if not result.has_errors():  
+       cliente_resource.import_data(dataset, dry_run=False) # Actually import now  
+   return render(request, 'importar.html') 
