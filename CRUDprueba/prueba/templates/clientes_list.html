@@ -2,13 +2,20 @@
 
 
 {% block content %}
+
+<div class ="row">
+    {{myfilter.form}}
+    
+</div>
+
+
 <table class="table table-borderless">
     <thead class="border-bottom font-weight-bold">
         <tr>
             <td>Nombre de Cliente</td>
             <td>Pais</td>
-            <td>Categotia</td>
             <td>Ciudad</td>
+            <td>Categotia</td>
             <td>
                 <a href="{% url 'clientes_insert' %}" class="btn btn-outline-success">
                     <i class="fas fa-plus"></i> Add New
@@ -21,8 +28,8 @@
             <tr>
                 <td>{{cliente.name_client}}</td>
                 <td>{{cliente.country}}</td>
-                <td>{{cliente.category}}</td>
                 <td>{{cliente.city}}</td>
+                <td>{{cliente.category}}</td>
                 <td>
                     <a href="{% url 'cliente_update' cliente.id %}" class="btn text-secondary px-0">
                         <i class="far fa-edit fa-lg"></i>

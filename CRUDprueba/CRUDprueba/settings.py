@@ -37,8 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'prueba',
+    'django_filters',
+    'import_export',  
     'crispy_forms'
+
+
 ]
+IMPORT_EXPORT_USE_TRANSACTIONS = True 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -51,6 +56,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'CRUDprueba.urls'
+
+IMPORT_EXPORT_USE_TRANSACTIONS = True  
 
 TEMPLATES = [
     {

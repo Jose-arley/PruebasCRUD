@@ -35,3 +35,5 @@ class Clientes(models.Model):
     user_createc = models.DateField()
     is_active = models.IntegerField(blank=True , null=True)
     Update = models.DateField()
+    def __str__(self):
+        return self.name_client 
