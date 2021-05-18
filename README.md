@@ -63,6 +63,7 @@ C:.
                 __init__.cpython-37.pyc
 
 
+
 El proyectos se compone de una aplicación y la estrcutura genral de Django
 se realiza con Python 3.7.2 y Django==3.0.2 como se puede comprobar en el archivo requirements.txt
 
