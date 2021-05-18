@@ -27,7 +27,7 @@ class Ciudades(models.Model):
         return self.city_name 
 
 class Clientes(models.Model):
-    id = models.CharField(primary_key=True, max_length=100) 
+    id = models.AutoField(primary_key=True) 
     name_client = models.CharField(max_length=100)
     country = models.ForeignKey(Paises, models.DO_NOTHING)
     city = models.ForeignKey(Ciudades,on_delete=models.CASCADE)
